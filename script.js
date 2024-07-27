@@ -5,32 +5,34 @@ function toggleMenu() {
   icon.classList.toggle("open");
 }
 
-// Dark / light mode
+// DARK LIGHT MODE
 
 const btn = document.getElementById("modeToggle");
 const btn2 = document.getElementById("modeToggle2");
-const themeIcons = document.querySelectorAll(".icon");
+const themeIcons = document.querySelectorAll(".color-icon");
 const currentTheme = localStorage.getItem("theme");
 
 if (currentTheme === "dark") {
   setDarkMode();
+} else {
+  setLightMode();
 }
 
 btn.addEventListener("click", function () {
-  setTheme();
+  toggleTheme();
 });
 
 btn2.addEventListener("click", function () {
-  setTheme();
+  toggleTheme();
 });
 
-function setTheme() {
+function toggleTheme() {
   let currentTheme = document.body.getAttribute("theme");
 
   if (currentTheme === "dark") {
-    setLightMode();
+      setLightMode();
   } else {
-    setDarkMode();
+      setDarkMode();
   }
 }
 
@@ -39,7 +41,7 @@ function setDarkMode() {
   localStorage.setItem("theme", "dark");
 
   themeIcons.forEach((icon) => {
-    icon.src = icon.getAttribute("src-dark");
+      icon.src = icon.getAttribute("data-src-dark");
   });
 }
 
@@ -48,6 +50,6 @@ function setLightMode() {
   localStorage.setItem("theme", "light");
 
   themeIcons.forEach((icon) => {
-    icon.src = icon.getAttribute("src-light");
+      icon.src = icon.getAttribute("data-src-light");
   });
 }
